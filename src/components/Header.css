@@ -1,0 +1,119 @@
+/* Header Component Styles */
+
+.header-container {
+  background: linear-gradient(to right, #2563eb, #9333ea);
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.dark .header-container {
+  background: linear-gradient(to right, #1e40af, #7c3aed);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-brand {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.header-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.header-subtitle {
+  color: #dbeafe;
+}
+
+.dark .header-subtitle {
+  color: #bfdbfe;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.print-button {
+  background-color: white;
+  color: #2563eb;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: scale(1);
+  animation: bounceSubtle 2s ease-in-out infinite;
+}
+
+.print-button:hover {
+  background-color: #f3f4f6;
+  transform: scale(1.05);
+}
+
+.print-button-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.theme-toggle {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  transform: scale(1);
+  color: white;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.theme-toggle-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceSubtle {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-3px) scale(1);
+  }
+  60% {
+    transform: translateY(-2px) scale(1);
+  }
+}

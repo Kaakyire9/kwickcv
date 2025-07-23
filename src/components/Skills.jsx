@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "./Skills.css";
+import "./shared.css";
 
 function Skills() {
   const [isEditing, setIsEditing] = useState(true);
