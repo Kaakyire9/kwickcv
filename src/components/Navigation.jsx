@@ -73,8 +73,8 @@ function Navigation() {
       </div>
 
       {/* Keyboard Hint */}
-      <div className="mt-2 text-center">
-        <span className="text-xs text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 px-2 py-1 rounded-full">
+      <div className="keyboard-hint">
+        <span className="keyboard-hint-text">
           Use ← → keys or click Next
         </span>
       </div>

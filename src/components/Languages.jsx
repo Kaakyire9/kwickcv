@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Languages.css";
 
 function Languages() {
   const [isEditing, setIsEditing] = useState(true);
@@ -35,11 +36,12 @@ function Languages() {
   };
 
   const ProficiencyBar = ({ proficiency }) => {
-    const { level, color } = proficiencyLevels[proficiency];
+    const { level } = proficiencyLevels[proficiency];
+    const proficiencyClass = proficiency.toLowerCase().replace(' ', '-');
     return (
-      <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2 mt-1">
+      <div className="proficiency-bar-container">
         <div 
-          className={`${color} h-2 rounded-full transition-all duration-500 ease-out`}
+          className={`proficiency-bar ${proficiencyClass}`}
           style={{ width: `${(level / 5) * 100}%` }}
         ></div>
       </div>
@@ -47,40 +49,40 @@ function Languages() {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg animate-scale-in">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-white flex items-center">
-          <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div className="languages-container">
+      <div className="languages-header">
+        <h2 className="languages-title">
+          <svg className="languages-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
           </svg>
           Languages
         </h2>
         <button
           onClick={() => setIsEditing(!isEditing)}
-          className="text-blue-500 hover:text-blue-700 transition duration-200 transform hover:scale-105"
+          className="edit-button"
         >
           {isEditing ? "Done" : "Edit"}
         </button>
       </div>
 
       {isEditing && (
-        <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4 mb-6 animate-fade-in">
-          <h3 className="font-semibold mb-3 text-gray-700 dark:text-gray-300">Add Language</h3>
-          <div className="space-y-3">
+        <div className="languages-form">
+          <h3 className="form-section-title">Add Language</h3>
+          <div className="form-section">
             <input
               type="text"
               name="name"
               placeholder="Language name"
               value={newLanguage.name}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
+              className="form-input"
             />
             
             <select
               name="proficiency"
               value={newLanguage.proficiency}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
+              className="form-select"
             >
               {Object.keys(proficiencyLevels).map(level => (
                 <option key={level} value={level}>
@@ -91,7 +93,7 @@ function Languages() {
             
             <button
               onClick={addLanguage}
-              className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-200 transform hover:scale-105"
+              className="add-button"
             >
               Add Language
             </button>
@@ -99,14 +101,14 @@ function Languages() {
         </div>
       )}
 
-      <div className="space-y-4">
+      <div className="languages-list">
         {languages.map((language) => (
-          <div key={language.id} className="border border-gray-200 dark:border-gray-600 rounded-lg p-4 hover:shadow-md transition-all duration-200 transform hover:scale-[1.02]">
-            <div className="flex justify-between items-start">
+          <div key={language.id} className="language-item">
+            <div className="language-header">
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-1">
-                  <h3 className="font-semibold text-gray-800 dark:text-white">{language.name}</h3>
-                  <span className="text-sm text-gray-600 dark:text-gray-400">{language.proficiency}</span>
+                  <h3 className="language-name">{language.name}</h3>
+                  <span className="language-proficiency">{language.proficiency}</span>
                 </div>
                 <ProficiencyBar proficiency={language.proficiency} />
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
@@ -116,7 +118,7 @@ function Languages() {
               {isEditing && (
                 <button
                   onClick={() => removeLanguage(language.id)}
-                  className="text-red-500 hover:text-red-700 font-bold ml-4 transform hover:scale-110 transition-all duration-200"
+                  className="remove-button"
                 >
                   ×
                 </button>
@@ -127,7 +129,7 @@ function Languages() {
       </div>
 
       {languages.length === 0 && !isEditing && (
-        <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+        <div className="empty-state">
           <p>No languages added yet. Click "Edit" to add your language skills.</p>
         </div>
       )}

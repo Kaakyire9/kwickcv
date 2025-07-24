@@ -1,9 +1,7 @@
+@import './components/shared.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import shared component styles */
-@import './components/shared.css';
 
 /* Custom scrollbar for dark mode */
 ::-webkit-scrollbar {

@@ -1,0 +1,257 @@
+/* Languages Component Styles */
+
+.languages-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.languages-container:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.dark .languages-container {
+  background-color: #1f2937;
+}
+
+.languages-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.languages-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dark .languages-title {
+  color: white;
+}
+
+.languages-icon {
+  width: 20px;
+  height: 20px;
+  color: #10b981;
+}
+
+.languages-form {
+  background-color: #f9fafb;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.dark .languages-form {
+  background-color: #111827;
+  border-color: #4b5563;
+}
+
+.form-section-title {
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #374151;
+}
+
+.dark .form-section-title {
+  color: #d1d5db;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: white;
+  color: #1f2937;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.dark .form-input,
+.dark .form-select {
+  border-color: #4b5563;
+  background-color: #1f2937;
+  color: white;
+}
+
+.add-button {
+  background-color: #10b981;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  transform: scale(1);
+}
+
+.add-button:hover {
+  background-color: #059669;
+  transform: scale(1.05);
+}
+
+.languages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.language-item {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.2s ease;
+  animation: slideIn 0.3s ease-out;
+}
+
+.language-item:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.dark .language-item {
+  background-color: #111827;
+  border-color: #374151;
+}
+
+.language-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.language-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.dark .language-name {
+  color: white;
+}
+
+.language-proficiency {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.dark .language-proficiency {
+  color: #9ca3af;
+}
+
+.proficiency-bar-container {
+  width: 100%;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  height: 8px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.dark .proficiency-bar-container {
+  background-color: #4b5563;
+}
+
+.proficiency-bar {
+  height: 100%;
+  border-radius: 9999px;
+  transition: all 0.5s ease-out;
+}
+
+.proficiency-bar.beginner {
+  background-color: #f87171;
+}
+
+.proficiency-bar.elementary {
+  background-color: #fb923c;
+}
+
+.proficiency-bar.intermediate {
+  background-color: #fbbf24;
+}
+
+.proficiency-bar.advanced {
+  background-color: #60a5fa;
+}
+
+.proficiency-bar.native {
+  background-color: #34d399;
+}
+
+.remove-button {
+  background-color: #ef4444;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.remove-button:hover {
+  background-color: #dc2626;
+}
+
+.empty-state {
+  text-align: center;
+  color: #6b7280;
+  font-style: italic;
+  padding: 32px 16px;
+}
+
+.dark .empty-state {
+  color: #9ca3af;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

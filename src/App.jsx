@@ -14,7 +14,7 @@ import { useEffect } from "react";
 import "./App.css";
 
 function CVContent() {
-  const { currentSection, sections, nextSection, prevSection } = useNavigation();
+  const { currentSection, sections, nextSection, prevSection, goToSection } = useNavigation();
 
   // Keyboard navigation
   useEffect(() => {
@@ -42,57 +42,55 @@ function CVContent() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <div className="app-container">
       {/* Professional Header */}
       <Header />
       
       {/* Main Content - Centered */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-center">
-          <div className="w-full max-w-4xl">
+      <main className="main-content">
+        <div className="content-wrapper">
+          <div className="content-inner">
             {/* Current Section Display */}
-            <div className="mb-8 text-center">
-              <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
+            <div className="section-header">
+              <h2 className="section-title">
                 {sections[currentSection].icon} {sections[currentSection].name}
               </h2>
-              <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+              <div className="section-divider"></div>
             </div>
 
             {/* Component Container */}
-            <div className="transition-all duration-500 ease-in-out transform">
+            <div className="component-transition">
               <div className="animate-fade-in">
                 {components[currentSection]}
               </div>
             </div>
 
             {/* Inline Navigation - Always Visible */}
-            <div className="mt-8 flex justify-between items-center">
+            <div className="inline-navigation">
               <button
                 onClick={prevSection}
                 disabled={currentSection === 0}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 transform hover:scale-105 ${
-                  currentSection === 0
-                    ? 'bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed'
-                    : 'bg-gray-500 hover:bg-gray-600 text-white shadow-lg'
+                className={`nav-btn prev-btn ${
+                  currentSection === 0 ? 'nav-btn-disabled' : 'nav-btn-active'
                 }`}
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="nav-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
                 <span>Previous</span>
               </button>
 
-              <div className="flex items-center space-x-2">
+              <div className="section-dots">
                 {sections.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => goToSection(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    className={`section-dot ${
                       index === currentSection 
-                        ? 'bg-blue-500 w-6' 
+                        ? 'section-dot-current' 
                         : index < currentSection
-                        ? 'bg-green-400'
-                        : 'bg-gray-300 dark:bg-gray-600'
+                        ? 'section-dot-completed'
+                        : 'section-dot-pending'
                     }`}
                     title={sections[index].name}
                   />
@@ -102,28 +100,26 @@ function CVContent() {
               <button
                 onClick={nextSection}
                 disabled={currentSection === sections.length - 1}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 transform hover:scale-105 ${
-                  currentSection === sections.length - 1
-                    ? 'bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed'
-                    : 'bg-blue-500 hover:bg-blue-600 text-white shadow-lg'
+                className={`nav-btn next-btn ${
+                  currentSection === sections.length - 1 ? 'nav-btn-disabled' : 'nav-btn-active'
                 }`}
               >
                 <span>Next</span>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="nav-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
             </div>
           </div>
         </div>
-      </div>
+      </main>
       
       {/* Navigation */}
       <Navigation />
       
       {/* Footer */}
-      <footer className="bg-gray-800 dark:bg-gray-950 text-white text-center py-4 mt-12 transition-colors duration-300">
-        <p>&copy; 2025 Professional CV Builder. Built with React & Tailwind CSS.</p>
+      <footer className="app-footer">
+        <p>&copy; 2025 KwickCV - Your Professional CV Builder</p>
       </footer>
     </div>
   );

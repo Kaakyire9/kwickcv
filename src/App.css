@@ -1,13 +1,225 @@
-.app {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
+/* App Layout Styles with Sticky Footer */
+
+/* Main app container using flexbox for sticky footer */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f3f4f6;
+  transition: background-color 0.3s ease;
 }
 
-form input, form textarea {
-  display: block;
-  margin-bottom: 10px;
-  padding: 8px;
+.dark .app-container {
+  background-color: #111827;
+}
+
+/* Main content area that grows to fill available space */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  flex: 1;
+}
+
+.content-inner {
   width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+/* Section header styles */
+.section-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.dark .section-title {
+  color: white;
+}
+
+.section-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #3b82f6, #9333ea);
+  margin: 0 auto;
+  border-radius: 9999px;
+}
+
+/* Component transition */
+.component-transition {
+  transition: all 0.5s ease-in-out;
+  transform: translateX(0);
+}
+
+/* Inline navigation styles */
+.inline-navigation {
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  transform: scale(1);
+}
+
+.nav-btn:hover:not(.nav-btn-disabled) {
+  transform: scale(1.05);
+}
+
+.nav-btn-active {
+  background-color: #6b7280;
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn-active:hover {
+  background-color: #4b5563;
+}
+
+.next-btn.nav-btn-active {
+  background-color: #3b82f6;
+}
+
+.next-btn.nav-btn-active:hover {
+  background-color: #2563eb;
+}
+
+.nav-btn-disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.dark .nav-btn-disabled {
+  background-color: #374151;
+  color: #6b7280;
+}
+
+.nav-btn-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Section dots navigation */
+.section-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.section-dot:hover {
+  transform: scale(1.25);
+}
+
+.section-dot-current {
+  background-color: #3b82f6;
+  width: 24px;
+}
+
+.section-dot-completed {
+  background-color: #10b981;
+}
+
+.section-dot-pending {
+  background-color: #d1d5db;
+}
+
+.dark .section-dot-pending {
+  background-color: #4b5563;
+}
+
+/* Footer styles - always at bottom */
+.app-footer {
+  background-color: #1f2937;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  margin-top: auto;
+  transition: all 0.3s ease;
+}
+
+.dark .app-footer {
+  background-color: #030712;
+}
+
+.app-footer p {
+  margin: 0;
+  font-size: 14px;
+  color: #d1d5db;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 16px;
+  }
+  
+  .section-title {
+    font-size: 24px;
+  }
+  
+  .inline-navigation {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .nav-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 24px;
+  }
+  
+  .section-dots {
+    order: -1;
+  }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in;
 }
