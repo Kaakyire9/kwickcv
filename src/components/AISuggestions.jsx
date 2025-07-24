@@ -150,15 +150,15 @@ function AISuggestions() {
     // Industry-specific insights
     if (skills.some(skill => skill.name.toLowerCase().includes('react') || 
                            skill.name.toLowerCase().includes('javascript'))) {
-      insights.push('💼 Tech Profile: Consider adding cloud platforms and testing frameworks');
+      insights.push('💼 Kwabena says: Your tech skills are impressive! Consider adding cloud platforms and testing frameworks');
     }
     
     if (experience.length > 3) {
-      insights.push('🌟 Experienced Professional: Highlight leadership and mentoring experience');
+      insights.push('🌟 Kwabena notes: You have solid experience! Highlight your leadership and mentoring skills');
     }
     
     if (certifications.length > 0) {
-      insights.push('🏆 Certified Professional: Your certifications add 25% more credibility');
+      insights.push('🏆 Kwabena approves: Your certifications add 25% more credibility to your profile');
     }
     
     return insights;
@@ -348,7 +348,7 @@ function AISuggestions() {
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <span style={{ fontSize: '24px' }}>🤖</span>
-              <span style={{ fontSize: '18px', fontWeight: '600' }}>AI Assistant</span>
+              <span style={{ fontSize: '18px', fontWeight: '600' }}>Kwabena AI</span>
             </div>
             <button
               onClick={closePanel}
@@ -422,14 +422,14 @@ function AISuggestions() {
                 fontSize: '14px' 
               }}>
                 {isAnalyzing 
-                  ? 'Analyzing...' 
+                  ? 'Kwabena is analyzing...' 
                   : analysis?.score >= 90 
-                  ? 'Excellent!'
+                  ? 'Kwabena says: Excellent!'
                   : analysis?.score >= 80
-                  ? 'Great Progress!'
+                  ? 'Kwabena says: Great Progress!'
                   : analysis?.score >= 60
-                  ? 'Good Start!'
-                  : 'Keep Building!'}
+                  ? 'Kwabena says: Good Start!'
+                  : 'Kwabena says: Keep Building!'}
               </span>
               {analysis?.lastAnalyzed && (
                 <div style={{ color: '#64748b', fontSize: '12px', marginTop: '4px' }}>
@@ -443,7 +443,7 @@ function AISuggestions() {
           {analysis?.insights && analysis.insights.length > 0 && (
             <div style={{ padding: '20px 24px', borderBottom: '1px solid #e2e8f0' }}>
               <h3 style={{ margin: '0 0 12px 0', color: '#1a202c', fontSize: '14px', fontWeight: '600' }}>
-                🧠 AI Insights
+                🧠 Kwabena's Insights
               </h3>
               {analysis.insights.map((insight, index) => (
                 <div key={index} style={{ 
@@ -471,7 +471,7 @@ function AISuggestions() {
                 fontWeight: '600',
               }}
             >
-              💡 Smart Suggestions
+              💡 Kwabena's Suggestions
             </h3>
 
             {/* Loading State */}
@@ -482,7 +482,7 @@ function AISuggestions() {
                 color: '#64748b'
               }}>
                 <div style={{ fontSize: '32px', marginBottom: '12px' }}>🔄</div>
-                <div>Analyzing your CV...</div>
+                <div>Kwabena is analyzing your CV...</div>
               </div>
             )}
 
@@ -559,7 +559,7 @@ function AISuggestions() {
                     border: '1px solid #bbf7d0'
                   }}>
                     <div style={{ fontSize: '48px', marginBottom: '12px' }}>🎉</div>
-                    <div style={{ fontWeight: '600', marginBottom: '4px' }}>Amazing!</div>
+                    <div style={{ fontWeight: '600', marginBottom: '4px' }}>Kwabena is impressed!</div>
                     <div style={{ fontSize: '14px' }}>Your CV looks comprehensive. Keep it updated!</div>
                   </div>
                 )}
@@ -595,7 +595,7 @@ function AISuggestions() {
                   }
                 }}
               >
-                🔄 {isAnalyzing ? 'Analyzing...' : 'Refresh Analysis'}
+                🔄 {isAnalyzing ? 'Kwabena is analyzing...' : 'Ask Kwabena Again'}
               </button>
               
               <button
