@@ -16,8 +16,9 @@ export const NavigationProvider = ({ children }) => {
   const sections = [
     { id: 'personal', name: 'Personal Info', icon: '👤' },
     { id: 'skills', name: 'Skills', icon: '🛠️' },
+    { id: 'skills-assessment', name: 'Skills Assessment', icon: '🏆' },
     { id: 'languages', name: 'Languages', icon: '🌍' },
-    { id: 'certifications', name: 'Certifications', icon: '🏆' },
+    { id: 'certifications', name: 'Certifications', icon: '📜' },
     { id: 'experience', name: 'Experience', icon: '💼' },
     { id: 'education', name: 'Education', icon: '🎓' },
     { id: 'projects', name: 'Projects', icon: '📁' },

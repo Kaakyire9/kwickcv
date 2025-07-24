@@ -2,6 +2,7 @@ import GeneralInfo from "./components/GeneralInfo";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
 import Skills from "./components/Skills";
+import SkillsAssessment from "./components/SkillsAssessment";
 import Projects from "./components/Projects";
 import Header from "./components/Header";
 import Certifications from "./components/Certifications";
@@ -37,6 +38,7 @@ function CVContent() {
   const components = [
     <GeneralInfo key="personal" />,
     <Skills key="skills" />,
+    <SkillsAssessment key="skills-assessment" />,
     <Languages key="languages" />,
     <Certifications key="certifications" />,
     <Experience key="experience" />,
