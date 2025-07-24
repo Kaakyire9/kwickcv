@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCVData } from "../contexts/CVDataContext";
+import { SmartInput } from "./SmartInput";
 import "./Skills.css";
 
 function Skills() {
@@ -67,11 +68,12 @@ function Skills() {
               
               <div className="form-group">
                 <label className="form-label">Skill Name</label>
-                <input
+                <SmartInput
                   type="text"
-                  placeholder="Skill name"
+                  placeholder="e.g., React.js, Python, Project Management"
                   value={newSkill.name}
                   onChange={(e) => setNewSkill({ ...newSkill, name: e.target.value })}
+                  fieldType="skills"
                   className="form-input"
                 />
               </div>

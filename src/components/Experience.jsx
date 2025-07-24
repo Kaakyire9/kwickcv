@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCVData } from "../contexts/CVDataContext";
+import { SmartInput, SmartTextarea } from "./SmartInput";
 import "./Experience.css";
 
 function Experience() {
@@ -62,21 +63,23 @@ function Experience() {
           <h3 className="form-section-title">Add Work Experience</h3>
           <div className="form-section">
             <div className="form-row">
-              <input
+              <SmartInput
                 type="text"
                 name="company"
                 value={currentExp.company}
-                placeholder="Company Name"
+                placeholder="Company Name (e.g., Google, Microsoft)"
                 onChange={handleChange}
+                fieldType="companies"
                 className="form-input"
                 required
               />
-              <input
+              <SmartInput
                 type="text"
                 name="position"
                 value={currentExp.position}
-                placeholder="Job Title/Position"
+                placeholder="Job Title/Position (e.g., Software Engineer)"
                 onChange={handleChange}
+                fieldType="jobTitles"
                 className="form-input"
                 required
               />
@@ -121,21 +124,23 @@ function Experience() {
             </div>
           </div>
           
-          <textarea
+          <SmartTextarea
             name="responsibilities"
             value={currentExp.responsibilities}
-            placeholder="Key responsibilities and duties..."
+            placeholder="Key responsibilities and duties... (Start with action verbs like 'Developed', 'Led', 'Implemented')"
             onChange={handleChange}
-            rows="3"
+            rows={3}
+            fieldType="experience"
             className="form-textarea"
           />
           
-          <textarea
+          <SmartTextarea
             name="achievements"
             value={currentExp.achievements}
-            placeholder="Major achievements and accomplishments..."
+            placeholder="Major achievements and accomplishments... (Include specific metrics and numbers)"
             onChange={handleChange}
-            rows="3"
+            rows={3}
+            fieldType="experience"
             className="form-textarea"
           />
           

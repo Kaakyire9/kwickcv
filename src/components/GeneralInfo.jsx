@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCVData } from "../contexts/CVDataContext";
+import { SmartInput, SmartTextarea } from "./SmartInput";
 import "./GeneralInfo.css";
 
 function GeneralInfo() {
@@ -135,12 +136,13 @@ function GeneralInfo() {
             />
           </div>
           
-          <textarea
+          <SmartTextarea
             name="summary"
             value={generalInfo.summary}
-            placeholder="Professional summary or objective..."
+            placeholder="Professional summary or objective... (Highlight your key achievements and career goals)"
             onChange={handleChange}
-            rows="4"
+            rows={4}
+            fieldType="summary"
             className="form-textarea"
           />
           
