@@ -9,6 +9,7 @@ import Awards from "./components/Awards";
 import Languages from "./components/Languages";
 import Templates from "./components/Templates";
 import Navigation from "./components/Navigation";
+import AISuggestions from "./components/AISuggestions";
 import { DarkModeProvider } from "./contexts/DarkModeContext";
 import { NavigationProvider, useNavigation } from "./contexts/NavigationContext";
 import { CVDataProvider } from "./contexts/CVDataContext";
@@ -119,6 +120,9 @@ function CVContent() {
       
       {/* Navigation */}
       <Navigation />
+      
+      {/* AI Suggestions */}
+      <AISuggestions />
       
       {/* Footer */}
       <footer className="app-footer">
