@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useCVData } from '../contexts/CVDataContext';
+import ExportOptions from './ExportOptions';
 import '../styles/Templates.css';
 
 function Templates() {
   const { getAllCVData } = useCVData();
   const [selectedTemplate, setSelectedTemplate] = useState('modern');
   const [isPreviewMode, setIsPreviewMode] = useState(false);
+  const [showExportOptions, setShowExportOptions] = useState(false);
 
   const cvData = getAllCVData();
 
@@ -44,14 +46,25 @@ function Templates() {
     }, 500);
   };
 
-  const handleDownloadPDF = async () => {
-    // For now, we'll use the browser's print to PDF functionality
-    // In a real implementation, you'd use a library like jsPDF or puppeteer
+  const handleQuickDownload = async () => {
+    // Quick PDF download with default settings
     setIsPreviewMode(true);
     setTimeout(() => {
       window.print();
       setIsPreviewMode(false);
     }, 500);
+  };
+
+  const handleAdvancedExport = () => {
+    setShowExportOptions(true);
+  };
+
+  const handleExportComplete = (settings) => {
+    setShowExportOptions(false);
+    if (settings) {
+      // Export was completed with custom settings
+      console.log('Export completed with settings:', settings);
+    }
   };
 
   const formatDate = (dateString) => {
@@ -99,11 +112,17 @@ function Templates() {
             </svg>
             Print CV
           </button>
-          <button onClick={handleDownloadPDF} className="action-button download-button">
+          <button onClick={handleQuickDownload} className="action-button download-button">
             <svg className="button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            Download PDF
+            Quick PDF
+          </button>
+          <button onClick={handleAdvancedExport} className="action-button export-button enhanced">
+            <svg className="button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+            </svg>
+            Advanced Export
           </button>
         </div>
       </div>
@@ -139,6 +158,14 @@ function Templates() {
           </div>
         </div>
       </div>
+
+      {/* Enhanced Export Options Modal */}
+      {showExportOptions && (
+        <ExportOptions
+          selectedTemplate={selectedTemplate}
+          onExport={handleExportComplete}
+        />
+      )}
     </div>
   );
 }

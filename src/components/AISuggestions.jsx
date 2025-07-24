@@ -609,6 +609,8 @@ function AISuggestions() {
                   fontWeight: '500',
                   cursor: 'pointer',
                   fontSize: '14px',
+                  position: 'relative',
+                  overflow: 'hidden'
                 }}
                 onMouseOver={(e) => {
                   e.target.style.transform = 'translateY(-1px)';
@@ -619,7 +621,7 @@ function AISuggestions() {
                   e.target.style.boxShadow = 'none';
                 }}
               >
-                📄 Export CV
+                📄 View Templates
               </button>
             </div>
           </div>
