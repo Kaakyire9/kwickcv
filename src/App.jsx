@@ -9,11 +9,15 @@ import Certifications from "./components/Certifications";
 import Awards from "./components/Awards";
 import Languages from "./components/Languages";
 import Templates from "./components/Templates";
+import Collaboration from "./components/Collaboration";
+import CollaborationToolbar from "./components/CollaborationToolbar";
+import CollaborationComments from "./components/CollaborationComments";
 import Navigation from "./components/Navigation";
 import AISuggestions from "./components/AISuggestions";
 import { DarkModeProvider } from "./contexts/DarkModeContext";
 import { NavigationProvider, useNavigation } from "./contexts/NavigationContext";
 import { CVDataProvider } from "./contexts/CVDataContext";
+import { CollaborationProvider } from "./contexts/CollaborationContext";
 import { useEffect } from "react";
 import "./App.css";
 import "./styles/MobileResponsive.css";
@@ -45,6 +49,7 @@ function CVContent() {
     <Education key="education" />,
     <Projects key="projects" />,
     <Awards key="awards" />,
+    <Collaboration key="collaboration" />,
     <Templates key="templates" />
   ];
 
@@ -127,6 +132,12 @@ function CVContent() {
       {/* AI Suggestions */}
       <AISuggestions />
       
+      {/* Collaboration Toolbar */}
+      <CollaborationToolbar />
+      
+      {/* Collaboration Comments */}
+      <CollaborationComments />
+      
       {/* Footer */}
       <footer className="app-footer">
         <p>&copy; 2025 KwickCV - Your Professional CV Builder</p>
@@ -139,9 +150,11 @@ function App() {
   return (
     <DarkModeProvider>
       <CVDataProvider>
-        <NavigationProvider>
-          <CVContent />
-        </NavigationProvider>
+        <CollaborationProvider>
+          <NavigationProvider>
+            <CVContent />
+          </NavigationProvider>
+        </CollaborationProvider>
       </CVDataProvider>
     </DarkModeProvider>
   );

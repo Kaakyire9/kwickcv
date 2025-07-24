@@ -23,6 +23,7 @@ export const NavigationProvider = ({ children }) => {
     { id: 'education', name: 'Education', icon: '🎓' },
     { id: 'projects', name: 'Projects', icon: '📁' },
     { id: 'awards', name: 'Awards', icon: '🥇' },
+    { id: 'collaboration', name: 'Collaboration', icon: '🤝' },
     { id: 'templates', name: 'Templates', icon: '📄' }
   ];
 

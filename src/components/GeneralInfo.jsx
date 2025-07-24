@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useCVData } from "../contexts/CVDataContext";
+import { useCollaboration } from "../contexts/CollaborationContext";
 import { SmartInput, SmartTextarea } from "./SmartInput";
+import CollaborativeInput from "./CollaborativeInput";
 import "./GeneralInfo.css";
 
 function GeneralInfo() {
   const { generalInfo, setGeneralInfo } = useCVData();
+  const { isCollaborationActive } = useCollaboration();
   const [isEditing, setIsEditing] = useState(true);
   const [photoPreview, setPhotoPreview] = useState(generalInfo.profilePhoto || null);
 
@@ -37,7 +40,22 @@ function GeneralInfo() {
   return (
     <div className="general-info-container">
       <div className="general-info-header">
-        <h2 className="general-info-title">Personal Information</h2>
+        <h2 className="general-info-title">
+          Personal Information
+          {isCollaborationActive && (
+            <span style={{
+              background: '#10b981',
+              color: 'white',
+              fontSize: '10px',
+              padding: '4px 8px',
+              borderRadius: '12px',
+              marginLeft: '12px',
+              fontWeight: 'normal'
+            }}>
+              🤝 COLLABORATIVE
+            </span>
+          )}
+        </h2>
         <button
           onClick={handleEdit}
           className="edit-button"
@@ -78,46 +96,92 @@ function GeneralInfo() {
           </div>
 
           <div className="form-grid">
-            <input
-              type="text"
-              name="name"
-              value={generalInfo.name}
-              placeholder="Full Name"
-              onChange={handleChange}
-              className="form-input"
-            />
-            <input
-              type="email"
-              name="email"
-              value={generalInfo.email}
-              placeholder="Email Address"
-              onChange={handleChange}
-              className="form-input"
-            />
-            <input
-              type="tel"
-              name="phone"
-              value={generalInfo.phone}
-              placeholder="Phone Number"
-              onChange={handleChange}
-              className="form-input"
-            />
-            <input
-              type="text"
-              name="location"
-              value={generalInfo.location}
-              placeholder="Location (City, State)"
-              onChange={handleChange}
-              className="form-input"
-            />
-            <input
-              type="url"
-              name="website"
-              value={generalInfo.website}
-              placeholder="Website/Portfolio URL"
-              onChange={handleChange}
-              className="form-input"
-            />
+            {isCollaborationActive ? (
+              <>
+                <CollaborativeInput
+                  section="generalInfo"
+                  field="name"
+                  value={generalInfo.name}
+                  onChange={handleChange}
+                  placeholder="Full Name"
+                  style={{ gridColumn: 'span 2' }}
+                />
+                <CollaborativeInput
+                  section="generalInfo"
+                  field="email"
+                  value={generalInfo.email}
+                  onChange={handleChange}
+                  placeholder="Email Address"
+                  type="email"
+                />
+                <CollaborativeInput
+                  section="generalInfo"
+                  field="phone"
+                  value={generalInfo.phone}
+                  onChange={handleChange}
+                  placeholder="Phone Number"
+                  type="tel"
+                />
+                <CollaborativeInput
+                  section="generalInfo"
+                  field="location"
+                  value={generalInfo.location}
+                  onChange={handleChange}
+                  placeholder="Location (City, State)"
+                />
+                <CollaborativeInput
+                  section="generalInfo"
+                  field="website"
+                  value={generalInfo.website}
+                  onChange={handleChange}
+                  placeholder="Website/Portfolio URL"
+                  type="url"
+                />
+              </>
+            ) : (
+              <>
+                <input
+                  type="text"
+                  name="name"
+                  value={generalInfo.name}
+                  placeholder="Full Name"
+                  onChange={handleChange}
+                  className="form-input"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  value={generalInfo.email}
+                  placeholder="Email Address"
+                  onChange={handleChange}
+                  className="form-input"
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  value={generalInfo.phone}
+                  placeholder="Phone Number"
+                  onChange={handleChange}
+                  className="form-input"
+                />
+                <input
+                  type="text"
+                  name="location"
+                  value={generalInfo.location}
+                  placeholder="Location (City, State)"
+                  onChange={handleChange}
+                  className="form-input"
+                />
+                <input
+                  type="url"
+                  name="website"
+                  value={generalInfo.website}
+                  placeholder="Website/Portfolio URL"
+                  onChange={handleChange}
+                  className="form-input"
+                />
+              </>
+            )}
             <input
               type="url"
               name="linkedin"
@@ -136,15 +200,27 @@ function GeneralInfo() {
             />
           </div>
           
-          <SmartTextarea
-            name="summary"
-            value={generalInfo.summary}
-            placeholder="Professional summary or objective... (Highlight your key achievements and career goals)"
-            onChange={handleChange}
-            rows={4}
-            fieldType="summary"
-            className="form-textarea"
-          />
+          {isCollaborationActive ? (
+            <CollaborativeInput
+              section="generalInfo"
+              field="summary"
+              value={generalInfo.summary}
+              onChange={handleChange}
+              placeholder="Professional summary or objective... (Highlight your key achievements and career goals)"
+              multiline={true}
+              style={{ marginBottom: '20px' }}
+            />
+          ) : (
+            <SmartTextarea
+              name="summary"
+              value={generalInfo.summary}
+              placeholder="Professional summary or objective... (Highlight your key achievements and career goals)"
+              onChange={handleChange}
+              rows={4}
+              fieldType="summary"
+              className="form-textarea"
+            />
+          )}
           
           <button 
             type="submit"
