@@ -15,6 +15,7 @@ import { NavigationProvider, useNavigation } from "./contexts/NavigationContext"
 import { CVDataProvider } from "./contexts/CVDataContext";
 import { useEffect } from "react";
 import "./App.css";
+import "./styles/MobileResponsive.css";
 
 function CVContent() {
   const { currentSection, sections, nextSection, prevSection, goToSection } = useNavigation();

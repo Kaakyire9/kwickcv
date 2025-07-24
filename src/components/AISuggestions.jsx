@@ -259,15 +259,15 @@ function AISuggestions() {
         <button
           onClick={togglePanel}
           style={{
-            width: '64px',
-            height: '64px',
+            width: window.innerWidth <= 768 ? '56px' : '64px',
+            height: window.innerWidth <= 768 ? '56px' : '64px',
             borderRadius: '50%',
             border: 'none',
             background: isAnalyzing 
               ? 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)' 
               : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
             color: 'white',
-            fontSize: '28px',
+            fontSize: window.innerWidth <= 768 ? '24px' : '28px',
             cursor: 'pointer',
             boxShadow: '0 8px 32px rgba(102, 126, 234, 0.4)',
             display: 'flex',
@@ -299,12 +299,12 @@ function AISuggestions() {
               position: 'absolute',
               top: '-4px',
               right: '-4px',
-              width: '24px',
-              height: '24px',
+              width: window.innerWidth <= 768 ? '20px' : '24px',
+              height: window.innerWidth <= 768 ? '20px' : '24px',
               borderRadius: '50%',
               background: '#ef4444',
               color: 'white',
-              fontSize: '12px',
+              fontSize: window.innerWidth <= 768 ? '10px' : '12px',
               fontWeight: '600',
               display: 'flex',
               alignItems: 'center',
@@ -322,12 +322,14 @@ function AISuggestions() {
         <div
           style={{
             position: 'fixed',
-            bottom: '100px',
-            right: '24px',
-            width: '380px',
-            maxHeight: '600px',
+            bottom: window.innerWidth <= 768 ? '80px' : '100px',
+            right: window.innerWidth <= 768 ? '8px' : '24px',
+            left: window.innerWidth <= 768 ? '8px' : 'auto',
+            width: window.innerWidth <= 768 ? 'auto' : '380px',
+            maxWidth: window.innerWidth <= 768 ? 'none' : '380px',
+            maxHeight: window.innerWidth <= 768 ? '70vh' : '600px',
             background: 'white',
-            borderRadius: '20px',
+            borderRadius: window.innerWidth <= 768 ? '16px' : '20px',
             boxShadow: '0 20px 60px rgba(0, 0, 0, 0.2)',
             border: '1px solid #e2e8f0',
             overflow: 'hidden',
@@ -339,7 +341,7 @@ function AISuggestions() {
           <div
             style={{
               background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              padding: '20px',
+              padding: window.innerWidth <= 768 ? '16px' : '20px',
               color: 'white',
               display: 'flex',
               justifyContent: 'space-between',
@@ -347,8 +349,8 @@ function AISuggestions() {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <span style={{ fontSize: '24px' }}>🤖</span>
-              <span style={{ fontSize: '18px', fontWeight: '600' }}>Kwabena AI</span>
+              <span style={{ fontSize: window.innerWidth <= 768 ? '20px' : '24px' }}>🤖</span>
+              <span style={{ fontSize: window.innerWidth <= 768 ? '16px' : '18px', fontWeight: '600' }}>Kwabena AI</span>
             </div>
             <button
               onClick={closePanel}
@@ -356,11 +358,11 @@ function AISuggestions() {
                 background: 'none',
                 border: 'none',
                 color: 'white',
-                fontSize: '28px',
+                fontSize: window.innerWidth <= 768 ? '24px' : '28px',
                 cursor: 'pointer',
                 padding: '0',
-                width: '32px',
-                height: '32px',
+                width: window.innerWidth <= 768 ? '28px' : '32px',
+                height: window.innerWidth <= 768 ? '28px' : '32px',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
@@ -378,7 +380,7 @@ function AISuggestions() {
           </div>
 
           {/* CV Score Section */}
-          <div style={{ padding: '24px', borderBottom: '1px solid #e2e8f0' }}>
+          <div style={{ padding: window.innerWidth <= 768 ? '16px' : '24px', borderBottom: '1px solid #e2e8f0' }}>
             <div
               style={{
                 display: 'flex',
@@ -441,7 +443,7 @@ function AISuggestions() {
 
           {/* AI Insights Section */}
           {analysis?.insights && analysis.insights.length > 0 && (
-            <div style={{ padding: '20px 24px', borderBottom: '1px solid #e2e8f0' }}>
+            <div style={{ padding: window.innerWidth <= 768 ? '16px' : '20px 24px', borderBottom: '1px solid #e2e8f0' }}>
               <h3 style={{ margin: '0 0 12px 0', color: '#1a202c', fontSize: '14px', fontWeight: '600' }}>
                 🧠 Kwabena's Insights
               </h3>
@@ -462,7 +464,7 @@ function AISuggestions() {
           )}
 
           {/* Suggestions Section */}
-          <div style={{ padding: '24px' }}>
+          <div style={{ padding: window.innerWidth <= 768 ? '16px' : '24px' }}>
             <h3
               style={{
                 margin: '0 0 20px 0',

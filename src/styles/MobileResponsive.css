@@ -1,0 +1,227 @@
+/* Mobile-First Responsive Enhancements for KwickCV */
+
+/* Global mobile optimizations */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Touch targets for mobile */
+button, input, select, textarea {
+  min-height: 44px; /* iOS recommended touch target size */
+  touch-action: manipulation;
+}
+
+/* Prevent horizontal scrolling */
+.app-container {
+  overflow-x: hidden;
+}
+
+/* Enhanced mobile navigation */
+@media (max-width: 768px) {
+  /* Sticky navigation optimization */
+  .inline-navigation {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding: 16px;
+    margin: 0 -16px -16px -16px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 20px 20px 0 0;
+  }
+  
+  /* Better touch targets */
+  .nav-btn {
+    min-height: 48px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .section-dot {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Form improvements */
+  .form-input,
+  .form-textarea,
+  .form-input-full-width {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 8px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  /* Modal improvements */
+  .templates-container,
+  .general-info-container {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  .content-wrapper {
+    padding: 8px;
+  }
+  
+  /* Compact navigation for very small screens */
+  .inline-navigation {
+    padding: 12px 8px;
+  }
+  
+  .nav-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  
+  /* Hide less important text on very small screens */
+  .template-description {
+    display: none;
+  }
+  
+  /* Stack action buttons vertically */
+  .action-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+/* Landscape mobile optimizations */
+@media (max-width: 768px) and (orientation: landscape) {
+  .content-wrapper {
+    padding: 12px 16px;
+  }
+  
+  .section-header {
+    margin-bottom: 16px;
+  }
+  
+  .section-title {
+    font-size: 22px;
+  }
+  
+  /* AI Panel adjustments for landscape */
+  .ai-panel-mobile {
+    max-height: 60vh !important;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Ensure crisp rendering on retina displays */
+  .app-container {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Dark mode mobile optimizations */
+@media (max-width: 768px) {
+  .dark .inline-navigation {
+    background: #1f2937;
+    border-top: 1px solid #374151;
+  }
+  
+  .dark .templates-container,
+  .dark .general-info-container {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Accessibility improvements for mobile */
+@media (max-width: 768px) {
+  /* Larger focus indicators */
+  button:focus,
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+  }
+  
+  /* Better contrast for disabled states */
+  .nav-btn-disabled {
+    opacity: 0.6;
+  }
+}
+
+/* Print optimizations for mobile */
+@media print {
+  .inline-navigation,
+  .app-footer,
+  .ai-suggestions-panel {
+    display: none !important;
+  }
+  
+  .main-content {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .content-wrapper {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+}
+
+/* PWA optimizations */
+@media (display-mode: standalone) {
+  /* Optimize for PWA when installed */
+  .app-container {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Performance optimizations */
+.component-transition,
+.animate-fade-in {
+  will-change: transform, opacity;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .component-transition,
+  .animate-fade-in,
+  .nav-btn,
+  .section-dot {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Enhanced scrolling */
+@media (max-width: 768px) {
+  .preview-container,
+  .ai-panel-content {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Improved text selection on mobile */
+@media (max-width: 768px) {
+  .summary-text,
+  .job-description,
+  .template-description {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+}

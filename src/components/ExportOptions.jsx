@@ -386,13 +386,13 @@ function ExportOptions({ selectedTemplate, onExport }) {
       alignItems: 'center',
       justifyContent: 'center',
       zIndex: 10000,
-      padding: '20px'
+      padding: window.innerWidth <= 768 ? '10px' : '20px'
     }}>
       <div style={{
         background: 'white',
-        borderRadius: '20px',
-        width: '90%',
-        maxWidth: '800px',
+        borderRadius: window.innerWidth <= 768 ? '16px' : '20px',
+        width: window.innerWidth <= 768 ? '100%' : '90%',
+        maxWidth: window.innerWidth <= 768 ? 'none' : '800px',
         maxHeight: '90vh',
         overflow: 'auto',
         padding: '0'
@@ -400,8 +400,8 @@ function ExportOptions({ selectedTemplate, onExport }) {
         {/* Header */}
         <div style={{
           background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-          padding: '30px',
-          borderRadius: '20px 20px 0 0',
+          padding: window.innerWidth <= 768 ? '20px' : '30px',
+          borderRadius: window.innerWidth <= 768 ? '16px 16px 0 0' : '20px 20px 0 0',
           color: 'white',
           position: 'relative'
         }}>
@@ -428,22 +428,22 @@ function ExportOptions({ selectedTemplate, onExport }) {
           >
             ×
           </button>
-          <h2 style={{ margin: '0 0 10px 0', fontSize: '28px', fontWeight: '700' }}>
+          <h2 style={{ margin: '0 0 10px 0', fontSize: window.innerWidth <= 768 ? '22px' : '28px', fontWeight: '700' }}>
             🚀 Enhanced Export Options
           </h2>
-          <p style={{ margin: '0', opacity: '0.9', fontSize: '16px' }}>
+          <p style={{ margin: '0', opacity: '0.9', fontSize: window.innerWidth <= 768 ? '14px' : '16px' }}>
             Customize your CV export with advanced options
           </p>
         </div>
 
         {/* Content */}
-        <div style={{ padding: '30px' }}>
+        <div style={{ padding: window.innerWidth <= 768 ? '20px' : '30px' }}>
           {/* Export Format Selection */}
           <div style={{ marginBottom: '30px' }}>
             <h3 style={{ margin: '0 0 15px 0', color: '#1a202c', fontSize: '18px', fontWeight: '600' }}>
               📄 Export Format
             </h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '12px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth <= 768 ? '1fr' : 'repeat(auto-fit, minmax(180px, 1fr))', gap: '12px' }}>
               {exportFormats.map(format => (
                 <div
                   key={format.id}
