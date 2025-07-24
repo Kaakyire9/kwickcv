@@ -1,14 +1,23 @@
 import { useDarkMode } from "../contexts/DarkModeContext";
+import { useNavigation } from "../contexts/NavigationContext";
 import { useState } from "react";
 import PrintView from "./PrintView";
 import "./Header.css";
 
 function Header() {
   const { darkMode, toggleDarkMode } = useDarkMode();
+  const { goToSection, sections } = useNavigation();
   const [showPrintView, setShowPrintView] = useState(false);
 
   const downloadCV = () => {
     setShowPrintView(true);
+  };
+
+  const goToTemplates = () => {
+    const templatesIndex = sections.findIndex(section => section.id === 'templates');
+    if (templatesIndex !== -1) {
+      goToSection(templatesIndex);
+    }
   };
 
   return (
@@ -22,6 +31,16 @@ function Header() {
             </div>
             
             <div className="header-controls">
+              <button
+                onClick={goToTemplates}
+                className="templates-button"
+              >
+                <svg className="templates-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span>Templates</span>
+              </button>
+              
               <button
                 onClick={downloadCV}
                 className="print-button"

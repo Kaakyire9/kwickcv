@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useCVData } from "../contexts/CVDataContext";
 import "./Experience.css";
 
 function Experience() {
+  const { experience, setExperience } = useCVData();
   const [isEditing, setIsEditing] = useState(true);
-  const [experienceList, setExperienceList] = useState([]);
   const [currentExp, setCurrentExp] = useState({
     company: "",
     position: "",
@@ -26,7 +27,7 @@ function Experience() {
   function handleSubmit(e) {
     e.preventDefault();
     if (currentExp.company && currentExp.position) {
-      setExperienceList([...experienceList, { ...currentExp, id: Date.now() }]);
+      setExperience([...experience, { ...currentExp, id: Date.now() }]);
       setCurrentExp({
         company: "",
         position: "",
@@ -41,7 +42,7 @@ function Experience() {
   }
 
   function removeExperience(id) {
-    setExperienceList(experienceList.filter(exp => exp.id !== id));
+    setExperience(experience.filter(exp => exp.id !== id));
   }
 
   return (
@@ -149,7 +150,7 @@ function Experience() {
 
       {/* Experience List Display */}
       <div className="experience-list">
-        {experienceList.map((exp) => (
+        {experience.map((exp) => (
           <div key={exp.id} className="experience-item">
             <div className="experience-item-header">
               <div className="experience-main-info">
@@ -199,7 +200,7 @@ function Experience() {
         ))}
       </div>
 
-      {experienceList.length === 0 && !isEditing && (
+      {experience.length === 0 && !isEditing && (
         <div className="empty-state">
           <p>No work experience added yet. Click "Edit Experience" to add your professional background.</p>
         </div>

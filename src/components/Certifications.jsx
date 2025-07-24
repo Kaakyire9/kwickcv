@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useCVData } from "../contexts/CVDataContext";
 import "./Certifications.css";
 
 function Certifications() {
+  const { certifications, setCertifications } = useCVData();
   const [isEditing, setIsEditing] = useState(true);
-  const [certifications, setCertifications] = useState([]);
   const [newCert, setNewCert] = useState({
     name: "",
     issuer: "",

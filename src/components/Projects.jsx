@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useCVData } from "../contexts/CVDataContext";
 import "./Projects.css";
 
 function Projects() {
+  const { projects, setProjects } = useCVData();
   const [isEditing, setIsEditing] = useState(true);
-  const [projects, setProjects] = useState([]);
   const [newProject, setNewProject] = useState({
     title: "",
     description: "",

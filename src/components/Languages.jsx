@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useCVData } from "../contexts/CVDataContext";
 import "./Languages.css";
 
 function Languages() {
+  const { languages, setLanguages } = useCVData();
   const [isEditing, setIsEditing] = useState(true);
-  const [languages, setLanguages] = useState([]);
   const [newLanguage, setNewLanguage] = useState({
     name: "",
     proficiency: "Beginner"

@@ -21,7 +21,8 @@ export const NavigationProvider = ({ children }) => {
     { id: 'experience', name: 'Experience', icon: '💼' },
     { id: 'education', name: 'Education', icon: '🎓' },
     { id: 'projects', name: 'Projects', icon: '📁' },
-    { id: 'awards', name: 'Awards', icon: '🥇' }
+    { id: 'awards', name: 'Awards', icon: '🥇' },
+    { id: 'templates', name: 'Templates', icon: '📄' }
   ];
 
   const nextSection = () => {

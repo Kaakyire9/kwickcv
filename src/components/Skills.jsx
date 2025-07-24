@@ -1,30 +1,22 @@
 import { useState } from "react";
+import { useCVData } from "../contexts/CVDataContext";
 import "./Skills.css";
 
 function Skills() {
+  const { skills, setSkills } = useCVData();
   const [isEditing, setIsEditing] = useState(true);
-  const [skills, setSkills] = useState({
-    technical: [],
-    languages: [],
-    soft: []
-  });
   const [newSkill, setNewSkill] = useState({ category: "technical", name: "", level: 5 });
 
   const addSkill = () => {
     if (newSkill.name.trim()) {
-      setSkills({
-        ...skills,
-        [newSkill.category]: [...skills[newSkill.category], { name: newSkill.name, level: newSkill.level }]
-      });
+      const newSkillItem = { name: newSkill.name, level: newSkill.level, category: newSkill.category };
+      setSkills([...skills, newSkillItem]);
       setNewSkill({ ...newSkill, name: "" });
     }
   };
 
-  const removeSkill = (category, index) => {
-    setSkills({
-      ...skills,
-      [category]: skills[category].filter((_, i) => i !== index)
-    });
+  const removeSkill = (index) => {
+    setSkills(skills.filter((_, i) => i !== index));
   };
 
   const SkillBar = ({ skill }) => (
@@ -109,48 +101,59 @@ function Skills() {
 
           {/* Skills Lists */}
           <div className="skills-categories">
-            {Object.entries(skills).map(([category, skillList]) => (
-              <div key={category} className="skill-category">
-                <h3 className="category-title">
-                  {category === "technical" ? "Technical Skills" : 
-                   category === "languages" ? "Languages" : "Soft Skills"}
-                </h3>
-                <div className="skills-grid">
-                  {skillList.map((skill, index) => (
-                    <div key={index} className="skill-item">
-                      <div className="skill-header">
-                        <SkillBar skill={skill} />
-                        <button
-                          onClick={() => removeSkill(category, index)}
-                          className="remove-button"
-                        >
-                          ×
-                        </button>
-                      </div>
-                    </div>
-                  ))}
+            {['technical', 'languages', 'soft'].map(category => {
+              const categorySkills = skills.filter(skill => skill.category === category);
+              if (categorySkills.length === 0) return null;
+              
+              return (
+                <div key={category} className="skill-category">
+                  <h3 className="category-title">
+                    {category === "technical" ? "Technical Skills" : 
+                     category === "languages" ? "Languages" : "Soft Skills"}
+                  </h3>
+                  <div className="skills-grid">
+                    {categorySkills.map((skill, index) => {
+                      const skillIndex = skills.findIndex(s => s === skill);
+                      return (
+                        <div key={skillIndex} className="skill-item">
+                          <div className="skill-header">
+                            <SkillBar skill={skill} />
+                            <button
+                              onClick={() => removeSkill(skillIndex)}
+                              className="remove-button"
+                            >
+                              ×
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       ) : (
         <div className="preview-skills">
-          {Object.entries(skills).map(([category, skillList]) => 
-            skillList.length > 0 && (
+          {['technical', 'languages', 'soft'].map(category => {
+            const categorySkills = skills.filter(skill => skill.category === category);
+            if (categorySkills.length === 0) return null;
+            
+            return (
               <div key={category} className="preview-category">
                 <h3 className="preview-category-title">
                   {category === "technical" ? "Technical Skills" : 
                    category === "languages" ? "Languages" : "Soft Skills"}
                 </h3>
                 <div className="skills-grid">
-                  {skillList.map((skill, index) => (
+                  {categorySkills.map((skill, index) => (
                     <SkillBar key={index} skill={skill} />
                   ))}
                 </div>
               </div>
-            )
-          )}
+            );
+          })}
         </div>
       )}
     </div>

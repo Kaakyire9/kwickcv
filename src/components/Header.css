@@ -47,6 +47,32 @@
   gap: 16px;
 }
 
+.templates-button {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: scale(1);
+}
+
+.templates-button:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.templates-button-icon {
+  width: 16px;
+  height: 16px;
+}
+
 .print-button {
   background-color: white;
   color: #2563eb;

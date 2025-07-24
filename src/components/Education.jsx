@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useCVData } from "../contexts/CVDataContext";
 import "../styles/Education.css";
 
 function Education() {
+  const { education, setEducation } = useCVData();
   const [isEditing, setIsEditing] = useState(true);
-  const [educationList, setEducationList] = useState([]);
   const [currentEdu, setCurrentEdu] = useState({ 
     school: "", 
     degree: "",
@@ -22,7 +23,7 @@ function Education() {
   function handleSubmit(e) {
     e.preventDefault();
     if (currentEdu.school && currentEdu.degree) {
-      setEducationList([...educationList, { ...currentEdu, id: Date.now() }]);
+      setEducation([...education, { ...currentEdu, id: Date.now() }]);
       setCurrentEdu({ 
         school: "", 
         degree: "",
@@ -36,7 +37,7 @@ function Education() {
   }
 
   function removeEducation(id) {
-    setEducationList(educationList.filter(edu => edu.id !== id));
+    setEducation(education.filter(edu => edu.id !== id));
   }
 
   return (
@@ -129,7 +130,7 @@ function Education() {
 
       {/* Education List Display */}
       <div className="education-list">
-        {educationList.map((edu) => (
+        {education.map((edu) => (
           <div key={edu.id} className="education-item">
             <div className="education-item-header">
               <div className="education-main-info">
@@ -164,7 +165,7 @@ function Education() {
         ))}
       </div>
 
-      {educationList.length === 0 && !isEditing && (
+      {education.length === 0 && !isEditing && (
         <div className="empty-state">
           <p>No education entries added yet. Click "Edit Education" to add your educational background.</p>
         </div>

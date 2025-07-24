@@ -7,9 +7,11 @@ import Header from "./components/Header";
 import Certifications from "./components/Certifications";
 import Awards from "./components/Awards";
 import Languages from "./components/Languages";
+import Templates from "./components/Templates";
 import Navigation from "./components/Navigation";
 import { DarkModeProvider } from "./contexts/DarkModeContext";
 import { NavigationProvider, useNavigation } from "./contexts/NavigationContext";
+import { CVDataProvider } from "./contexts/CVDataContext";
 import { useEffect } from "react";
 import "./App.css";
 
@@ -38,7 +40,8 @@ function CVContent() {
     <Experience key="experience" />,
     <Education key="education" />,
     <Projects key="projects" />,
-    <Awards key="awards" />
+    <Awards key="awards" />,
+    <Templates key="templates" />
   ];
 
   return (
@@ -128,9 +131,11 @@ function CVContent() {
 function App() {
   return (
     <DarkModeProvider>
-      <NavigationProvider>
-        <CVContent />
-      </NavigationProvider>
+      <CVDataProvider>
+        <NavigationProvider>
+          <CVContent />
+        </NavigationProvider>
+      </CVDataProvider>
     </DarkModeProvider>
   );
 }

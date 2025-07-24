@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useCVData } from "../contexts/CVDataContext";
 import "../styles/Awards.css";
 
 function Awards() {
+  const { awards, setAwards } = useCVData();
   const [isEditing, setIsEditing] = useState(true);
-  const [awards, setAwards] = useState([]);
   const [newAward, setNewAward] = useState({
     title: "",
     issuer: "",
